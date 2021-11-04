@@ -1,10 +1,11 @@
 const fs = require('fs');
+const path = require('path');
 
-const stream = new fs.ReadStream(__dirname);
+const stream = new fs.ReadStream(path.join(__dirname, './text.txt'));
 
 stream.on('readable', function() {
-	let data = stream.read();
-	console.log(data.toString());
+	let readable = stream.read();
+	console.log(readable.toString());
 });
 
 stream.on('error', function(err) {
